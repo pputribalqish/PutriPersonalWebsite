@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Me</title>
+<style>
+  /* ---------- Base ---------- */
+  :root{
+    --brown-dark: #301809;
+    --soft-brown: #c2a68d;
+    --cream: #fffdf9;
+    --beige-bg: #f3eade;
+    --text-brown: #4a3d2f;
+  }
+
+  html { 
+    box-sizing: border-box; 
+    scroll-behavior: smooth; 
+  }
+  *, *::before, *::after { 
+    box-sizing: inherit; 
+  }
+
+
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+  }
+
+  /* ---------- Header & Nav ---------- */
+  header {
+    background-image: url("background.jpg");
+    padding: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 35px;
+    color: rgb(255, 238, 143);
+  }
+
+  header h2 { 
+    font-family: 'Gloock', serif; 
+    margin: 0; 
+  }
+
+  ul.topnav {
+    display: flex;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--brown-dark);
+    justify-content: center;
+  }
+
+  ul.topnav li a {
+    display: block;
+    color: #f1f1f1;
+    padding: 14px 18px;
+    text-decoration: none;
+    text-align: center;
+  }
+  ul.topnav li a:hover { 
+    background-color: #dddddd; 
+    color: black; 
+  }
+
+  /* ---------- MAIN CONTAINER (FIXED — NO FLEX) ---------- */
+  .container {
+    width: 100%;
+    background-image: url("wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: block;      
+    text-align: center;  
+    padding-top: 40px;
+  }
+
+  /* ---------- AUDIO ATAS (BETUL-BETUL CENTER) ---------- */
+  .audio-top-center {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 35px;
+  }
+
+  .audio-top-center h1 {
+    font-size: 30px;
+    color: #4a3d2f;
+    margin-bottom: 12px;
+  }
+
+  .audio-box {
+    display: inline-block;
+    background: rgba(255,255,255,0.8);
+    padding: 14px 22px;
+    border-radius: 12px;
+    border: 2px solid #c2a68d;
+    backdrop-filter: blur(2px);
+  }
+
+  /* ---------- Two-box row ---------- */
+  .one-box-wrapper {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+    justify-content: center;
+    padding: 40px 0;
+  }
+
+
+  /* Box info */
+  .aesthetic-box {
+    flex: 1;
+    max-width: 600px;
+    background: linear-gradient(135deg, #fffdf9, #f9f5ef);
+    padding: 34px;
+    border: 2px solid var(--soft-brown);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+  }
+
+/* --- Image Slider --- */
+.slider {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;     
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+.slides {
+  display: flex;
+  width: 100%;          
+  height: 100%;
+  transition: transform 0.8s ease;
+}
+
+.slides img {
+  width: 100%;
+  height: 100%;         
+  object-fit: cover;    
+  flex-shrink: 0;       
+}
+
+
+.slider button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.slider button:hover {
+  background: white;
+}
+
+
+  .aesthetic-box h2 {
+    margin-bottom: 18px;
+    color: var(--text-brown);
+    font-size: 28px;
+  }
+
+  .info-row {
+    display: flex;
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+
+  .label {
+    font-weight: bold;
+    width: 160px;
+    color: #6d5844;
+  }
+  .value { color: #3f3f3f; }
+
+  /* ---------- Three-box-section ---------- */
+  .three-box-section {
+    width: 100%;
+    background-image: url('wallpaper3.jpg');
+    background-size: cover;
+    padding: 60px 0;
+  }
+
+  .three-box-wrapper {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+  }
+
+  .three-box-wrapper div {
+    flex: 1;
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    border: 2px solid var(--soft-brown);
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  
+/* === Animated underline for section titles === */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #c2a68d,
+    #301809
+  );
+  transform: translateX(-50%);
+  animation: underlineGrow 1.2s ease forwards;
+}
+
+/* Hover glow effect */
+.animated-underline:hover::after {
+  height: 4px;
+}
+
+/* Animation */
+@keyframes underlineGrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 70%;
+  }
+}
+
+
+
+/* ===== MEDIA HUB ===== */
+.media-hub {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #f3eade, #fffdf9);
+}
+
+.media-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.media-card {
+  width: 280px;
+  padding: 30px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.85);
+  border: 2px solid #c2a68d;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.media-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(48,24,9,0.25);
+}
+
+.media-card h3 {
+  color: #301809;
+  margin-bottom: 12px;
+}
+
+/* ===== MODAL ===== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+}
+
+.modal-content {
+  background: #fffdf9;
+  width: 90%;
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 30px;
+  border-radius: 16px;
+  position: relative;
+  animation: zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ===== PREMIUM MEDIA CONSOLE ===== */
+.media-console {
+  padding: 90px 20px;
+  background: radial-gradient(circle at top, #fffdf9, #f3eade);
+  text-align: center;
+}
+
+.console-grid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.console-card {
+  width: 280px;
+  padding: 35px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(194,166,141,0.6);
+  cursor: pointer;
+  transition: all 0.45s ease;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.console-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(194,166,141,0.4),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: 0.6s;
+}
+
+.console-card:hover::before {
+  transform: translateX(100%);
+}
+
+.console-card:hover {
+  transform: translateY(-14px) scale(1.06);
+  box-shadow: 0 25px 60px rgba(48,24,9,0.3);
+}
+
+.console-card .icon {
+  font-size: 42px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* ===== PREMIUM MODAL ===== */
+.premium-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+}
+
+.premium-modal-content {
+  background: linear-gradient(135deg, #fffdf9, #f9f5ef);
+  width: 90%;
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 35px;
+  border-radius: 22px;
+  position: relative;
+  animation: premiumPop 0.45s ease;
+}
+
+@keyframes premiumPop {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.premium-modal .close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.premium-link {
+  display: block;
+  margin: 16px 0;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #fff, #f3eade);
+  border-radius: 14px;
+  text-decoration: none;
+  color: #301809;
+  font-weight: bold;
+  transition: all 0.35s ease;
+  border: 1px solid #c2a68d;
+}
+
+.premium-link:hover {
+  transform: translateX(10px);
+  background: #301809;
+  color: #fff;
+}
+
+
+.youtube-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.youtube-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease;
+}
+
+.youtube-item:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+.youtube-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.youtube-label {
+  position: absolute;
+  inset: 0;
+  background: rgba(48,24,9,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+
+
+  footer {
+    background-color: var(--brown-dark);
+    padding: 12px;
+    text-align: center;
+    color: rgb(255, 238, 143);
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h2>About Me</h2>
+  <p id="clock"></p>
+</header>
+
+<ul class="topnav">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="aboutme.html">About Me</a></li>
+  <li><a href="education.html">Education</a></li>
+  <li><a href="skills.html">Skills</a></li>
+  <li><a href="gallery.html">Gallery</a></li>
+</ul>
+
+<section class="container">
+
+  <!-- ⭐ AUDIO CENTER ATAS KOTAK ⭐ -->
+  <div class="audio-top-center">
+      <h1><em>Listen while scrolling</em></h1>
+      <div class="audio-box">
+          <p>The 1975 - About You</p>
+        <audio id="bgMusic" controls loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+      </div>
+  </div>
+
+  <!-- ⭐ Dua kotak bawah audio ⭐ -->
+  <div class="one-box-wrapper">
+
+  <div class="slider">
+    <div class="slides" id="sliderImages">
+      <img src="profilepic.jpg" alt="">
+      <img src="profilepic2.jpg" alt="">
+      <img src="profilepic3.jpg" alt="">
+    </div>
+
+    <button class="prev" onclick="moveSlide(-1)">❮</button>
+    <button class="next" onclick="moveSlide(1)">❯</button>
+  </div>
+
+
+
+
+    <div class="aesthetic-box">
+      <h2>Get To Know Me</h2>
+      <div class="info-row">
+        <span class="label">Full Name:</span>
+        <span class="value">Putri Balqish Binti Ahmad Shahbudin</span></div>
+      <div class="info-row">
+        <span class="label">Nickname:</span>
+        <span class="value">Aqish</span></div>
+      <div class="info-row">
+        <span class="label">Date of Birth:</span>
+        <span class="value">06 November 2005</span></div>
+      <div class="info-row">
+        <span class="label">Place of Birth:</span>
+        <span class="value">Hospital Besar Melaka</span></div>
+      <div class="info-row">
+        <span class="label">My Home:</span>
+        <span class="value">Ayer Keroh, Melaka</span></div>
+      <div class="info-row">
+        <span class="label">Age:</span>
+        <span class="value">20</span></div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Three Box -->
+<div class="three-box-section">
+  <div class="three-box-wrapper">
+
+    <div class="boxA">
+      <h3 class="animated-underline">My Favorite Movies and Series</h3>
+      <ul>
+        <li>The Princess Diaries</li>
+        <li>Mean Girls</li>
+        <li>Bridgerton</li>
+        <li>Suits</li>
+      </ul>
+    </div>
+
+    <div class="boxB">
+      <h3 class="animated-underline">My Favorite Foods</h3>
+      <ul>
+        <li>Steak</li>
+        <li>Fries</li>
+        <li>Ayam Gepuk</li>
+        <li>Ayam Masak Merah</li>
+      </ul>
+    </div>
+
+    <div class="boxC">
+      <h3 class="animated-underline">Fun Fact About Me</h3>
+      <ul>
+        <li>I love flowers</li>
+        <li>I enjoy cooking and baking</li>
+        <li>I love F1</li>
+        <li>Car enthusiast</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- 🌌 PREMIUM MEDIA CONSOLE -->
+<section class="media-console">
+  <h2 class="animated-underline">Interactive Media Console</h2>
+
+  <div class="console-grid">
+
+    <!-- MOVIE CARD -->
+    <div class="console-card" onclick="openModal('movie')">
+      <span class="icon">🎬</span>
+      <h3>Movie Clips and Trailers</h3>
+      <p>Explore my favorite movies</p>
+    </div>
+
+    <!-- YOUTUBE CARD -->
+    <div class="console-card" onclick="openModal('youtube')">
+      <span class="icon">📺</span>
+      <h3>YouTube Preferences</h3>
+      <p>What I enjoy watching</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 🌙 PREMIUM MODAL -->
+<div id="mediaModal" class="premium-modal">
+  <div class="premium-modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+
+
+
+
+<footer>
+  <p>© 2025 Putri Balqish | Designed with ♥</p>
+</footer>
+
+
+<script>
+const audio = document.getElementById("bgMusic");
+
+function enableAudio() {
+    audio.play();
+    document.removeEventListener("click", enableAudio);
+    document.removeEventListener("scroll", enableAudio);
+}
+
+// Play after first interaction
+document.addEventListener("click", enableAudio);
+document.addEventListener("scroll", enableAudio);
+</script>
+
+
+<script>
+let slideIndex = 0;
+const slider = document.getElementById("sliderImages");
+const totalSlides = slider.children.length;
+
+function moveSlide(step) {
+  slideIndex += step;
+  if (slideIndex >= totalSlides) slideIndex = 0;
+  if (slideIndex < 0) slideIndex = totalSlides - 1;
+  slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+}
+
+// Auto slide every 4 seconds
+setInterval(() => { moveSlide(1); }, 4000);
+
+</script>
+
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateString = now.toLocaleDateString(undefined, options);
+    const timeString = now.toLocaleTimeString();
+    document.getElementById("clock").innerHTML = dateString + " | " + timeString;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
+
+<script>
+function openModal(type) {
+  const modal = document.getElementById("mediaModal");
+  const body = document.getElementById("modalBody");
+
+  if (type === "movie") {
+    body.innerHTML = `
+      <h2>🎬 Favorite Movie Trailer</h2>  
+      <iframe id="trailerFrame" width="100%" height="420"
+        src="${trailers[trailerIndex]}"
+        frameborder="0" allowfullscreen></iframe>
+    `;
+  }
+
+  if (type === "youtube") {
+    body.innerHTML = `
+      <h2>📺 Types of Videos I Love Watching</h2>
+      <ul style="text-align:left; font-size:18px; line-height:1.8;">
+        <li>🍳 Cooking & Baking Videos</li>
+        <li>🏎️ Formula 1 & Car Reviews</li>
+        <li>🌸 Lifestyle & Vlogs</li>
+        <li>🎧 Music & Live Performances</li>
+      </ul>
+    `;
+  }
+
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("mediaModal").style.display = "none";
+}
+</script>
+
+<script>
+let trailerIndex = 0;
+
+const trailers = [
+  {
+    title: "The Princess Diaries Movie Clip",
+    url: "https://youtu.be/z5SluxprhnA?si=5Rth_S6EPuxSJI2t"
+  },
+  {
+    title: "Mean Girls Iconic Clips",
+    url: "https://youtu.be/UrNt9OeDEX8?si=Xheo7rmTrJEFjVO5"
+  },
+  {
+    title: "Bridgerton Trailer",
+    url: "https://youtu.be/gpv7ayf_tyE?si=XxtlyEWdrtO7ZwXn"
+  }
+];
+
+
+function openModal(type) {
+  const modal = document.getElementById("mediaModal");
+  const body = document.getElementById("modalBody");
+
+  if (type === "movie") {
+  body.innerHTML = `
+    <h2>🎬 Favorite Movie Trailers</h2>
+
+    <div class="link-list">
+      ${trailers.map(t => `
+        <a href="${t.url}" target="_blank" class="premium-link">
+          ▶ ${t.title}
+        </a>
+      `).join("")}
+    </div>
+  `;
+}
+
+
+  if (type === "youtube") {
+    body.innerHTML = `
+      <h2>📺 YouTube Content I Love</h2>
+
+      <details open>
+        <summary>🍳 Cooking & Baking</summary>
+        <p>Relaxing recipes, baking tutorials</p>
+      </details>
+
+      <details>
+        <summary>🏎️ Formula 1 & Cars</summary>
+        <p>Race highlights, car reviews</p>
+      </details>
+
+      <details>
+        <summary>🌸 Lifestyle & Aesthetic</summary>
+        <p>Daily vlogs, aesthetic routines</p>
+      </details>
+
+      <details>
+        <summary>🎧 Music</summary>
+        <p>Live sessions, chill playlists</p>
+      </details>
+    `;
+  }
+
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("mediaModal").style.display = "none";
+}
+
+function nextTrailer() {
+  trailerIndex = (trailerIndex + 1) % trailers.length;
+  document.getElementById("trailerFrame").src = trailers[trailerIndex];
+}
+
+function prevTrailer() {
+  trailerIndex = (trailerIndex - 1 + trailers.length) % trailers.length;
+  document.getElementById("trailerFrame").src = trailers[trailerIndex];
+}
+</script>
+
+
+
+</body>
+</html>

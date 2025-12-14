@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education</title>
+
+<style>
+    body {
+        font-family:'Times New Roman', Times, serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+    }
+
+    /* VIDEO BACKGROUND */
+    #bgVideo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1; 
+        object-fit: cover;
+        filter: brightness(0.7);
+    }
+
+    /* HEADER */
+        header {
+             background-image: url("background.jpg"); 
+             padding: 30px; 
+             width: 100%; 
+             text-align: center; 
+             font-size: 35px; 
+             color: rgb(255, 238, 143); 
+    }
+
+
+    header h2 { 
+        font-family: 'Gloock', serif; 
+        margin:0; 
+}
+
+    /* TOPNAV */
+    ul.topnav {
+        display: flex;
+        width: 100%;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: rgba(48,24,9,0.85);
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+    }
+    ul.topnav li a {
+        display: block;
+        color: #f1f1f1;
+        padding: 14px 16px;
+        text-decoration: none;
+        text-align: center;
+    }
+    ul.topnav li a:hover {
+        background-color: #dddddd;
+        color: black;
+    }
+
+    /* EDUCATION GRID */
+    .education-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        width: 90%;
+        margin: 80px auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .content-box {
+        background-image: url(wallpaper2.jpg);
+        backdrop-filter: blur(3px);
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.25);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .text { 
+        width: 60%; 
+    }
+
+    .slider {
+        width: 250px;
+        height: 180px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+    .slider img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .fade {
+        animation: fadeEffect 1.2s ease-in-out;
+    }
+    @keyframes fadeEffect {
+        from { opacity: 0.4; }
+        to { opacity: 1; }
+    }
+
+    /* VIDEO SECTION */
+    .video-section {
+        width: 85%;
+        margin: 40px auto;
+        background: rgba(255,255,255,0.85);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.2);
+        position: relative;
+        z-index: 1;
+    }
+
+    .video-section h1 { 
+        text-align:center; 
+        color:#301809; 
+        margin-bottom:25px;
+     }
+
+    .video-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    .video-box {
+        background: #fff7ea;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        text-align: center;
+    }
+    .video-box video {
+         width:100%; 
+         border-radius:10px;
+          margin-bottom:15px; 
+        }
+
+    .video-box h3 { 
+        color:#301809; 
+        margin:10px 0; 
+    }
+
+    .video-box p { 
+        color:#4b3b2a;
+     }
+
+    /* FAVOURITE SUBJECTS */
+    .fav-subjects {
+        width: 60%;
+        margin: 40px auto;
+        background: rgba(255,255,255,0.85);
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        position: relative;
+        z-index: 1;
+    }
+
+    .fav-subjects h1 { 
+        text-align:center; 
+        color:#301809; 
+        margin-bottom:20px; 
+    }
+
+    .subject { 
+        margin-bottom:15px; 
+    }
+
+    .subject span { 
+        font-size:18px; 
+        font-weight:bold; 
+        color:#301809; 
+    }
+
+    .bar { 
+        width:100%; 
+        height:15px; 
+        background:#e6ceb5; 
+        border-radius:10px; 
+        margin-top:5px; 
+        overflow:hidden;
+    }
+
+    .fill { 
+        height:100%; 
+        background:#301809; 
+        border-radius:10px; 
+        transition: width 1s ease-in-out; 
+    }
+
+
+
+/* ===== ACTIVITY GALLERY ===== */
+.activity-gallery {
+  width: 80%;
+  margin: 50px auto;
+  background: antiquewhite;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.8s ease;
+}
+
+.carousel-item {
+  min-width: 60%;
+  opacity: 0.4;
+  transform: scale(0.9);
+  transition: all 0.8s ease;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.carousel-item p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #301809;
+}
+
+/* ACTIVE (gambar tengah) */
+.carousel-item.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+    /* FOOTER */
+    footer {
+        background-color: rgba(48,24,9,0.85);
+        padding: 10px;
+        text-align: center;
+        color: rgb(255, 238, 143); 
+        position: relative;
+        z-index:1;
+    }
+
+</style>
+</head>
+<body>
+
+<!-- VIDEO BACKGROUND -->
+<video autoplay muted loop id="bgVideo">
+    <source src="background-video.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video>
+
+<header>
+    <h2>Education</h2>
+    <p id="clock"></p>
+</header>
+
+<ul class="topnav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="aboutme.html">About Me</a></li>
+    <li><a href="education.html">Education</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+</ul>
+
+<section class="education-grid">
+
+    <!-- Kindergarten -->
+    <div class="content-box">
+        <div class="text">
+            <h1>Kindergarten</h1>
+            <h2>2010-2011, An Nur Ilmu Montessori Bandar Seri Putra</h2>
+            <a href="https://share.google/l9IWJi5MhmWVVYCPk" target="_blank">Located at 54, Jalan Seri Putra, 2/4C, 43000, Bangi</a>
+        </div>
+        <div class="slider">
+            <img id="slide1" src="kg1.jpg" class="fade">
+        </div>
+    </div>
+
+    <!-- Primary School -->
+    <div class="content-box">
+        <div class="text">
+            <h1>Primary School</h1>
+            <h2>2012-2014, SK Bandar Seri Putra</h2>
+            <a href="https://maps.app.goo.gl/NEXkp1W1GwnwMKBR6" target="_blank">Located at Jalan Seri Putra, Kajang, Selangor</a><br>
+            <h3>2015-2017, SK Kampung Tun Razak</h3>
+            <a href="https://maps.app.goo.gl/TXPYwQeR6px4SaRg9" target="_blank">Located at Bukit Katil, 75450, Melaka</a>
+        </div>
+        <div class="slider">
+            <img id="slide2" src="ps1.jpg" class="fade">
+        </div>
+    </div>
+
+    <!-- Secondary School -->
+    <div class="content-box">
+        <div class="text">
+            <h1>Secondary School</h1>
+            <h2>2018-2022, SMKA Sharifah Rodziah</h2>
+            <a href="https://maps.app.goo.gl/MmRNnUpeR4fk9jLn8" target="_blank">Located at Telok Mas, 75460, Melaka</a>
+        </div>
+        <div class="slider">
+            <img id="slide4" src="sec.jpg" class="fade">
+        </div>
+    </div>
+
+    <!-- Diploma -->
+    <div class="content-box">
+        <div class="text">
+            <h1>Diploma</h1>
+            <h2>2023-Present, UiTM Cawangan Johor, Kampus Segamat</h2>
+            <a href="https://maps.app.goo.gl/urGjRXTsCN6SMLPd9" target="_blank">Located at Segamat, Johor</a>
+        </div>
+        <div class="slider">
+            <img id="slide5" src="dip.jpg" class="fade">
+        </div>
+    </div>
+
+</section>
+
+<section class="video-section">
+    <h1>My Education Journey Videos</h1>
+    <div class="video-container">
+        <div class="video-box">
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+            </video>
+            <h3>Secondary school Journey</h3>
+            <p>A collection of early memories school years.</p>
+        </div>
+        <div class="video-box">
+            <video controls>
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+            <h3>Diploma Journey</h3>
+            <p>My growth from high school to becoming a diploma student in UiTM.</p>
+        </div>
+    </div>
+</section>
+
+<section class="fav-subjects"> 
+    <h1>My Favourite Subjects in School</h1>
+     <div class="subject"> 
+        <span>English</span>
+         <div class="bar">
+            <div class="fill" style="width: 90%;"></div>
+        </div>
+     </div>
+      <div class="subject">
+         <span>Bahasa Melayu</span> 
+        <div class="bar">
+            <div class="fill" style="width: 85%;"></div>
+        </div>
+     </div>
+      <div class="subject">
+         <span>Mathematics</span> 
+         <div class="bar">
+            <div class="fill" style="width: 75%;"></div>
+        </div>
+     </div>
+      <div class="subject">
+         <span>History</span>
+          <div class="bar">
+            <div class="fill" style="width: 70%;"></div>
+        </div>
+     </div>
+</section>
+
+<section class="activity-gallery">
+  <h1>School Memories to Recap</h1>
+
+  <div class="carousel">
+    
+
+    <div class="carousel-track" id="activityTrack">
+      <div class="carousel-item active">
+        <img src="activity1.jpg" alt="Teacher's Day & Sports Day">
+        <p>2022 – Teacher's Day</p>
+      </div>
+
+      <div class="carousel-item">
+        <img src="activity2.jpg" alt="Art Competition">
+        <p>2022 – Sports Day</p>
+      </div>
+
+      <div class="carousel-item">
+        <img src="activity3.jpg" alt="Choir Performance">
+        <p>2023 – High School Graduation</p>
+      </div>
+
+      <div class="carousel-item">
+        <img src="activity4.jpg" alt="Science Fair">
+        <p>2022 – Sports Day2</p>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+
+<footer> 
+    <p>© 2025 Putri Balqish | Designed with ♥</p>
+</footer>
+
+<script>
+function updateClock() {
+    const now = new Date();
+    const options = { weekday:'long', year:'numeric', month:'long', day:'numeric'};
+    const dateString = now.toLocaleDateString(undefined, options);
+    const timeString = now.toLocaleTimeString();
+    document.getElementById("clock").innerHTML = dateString + " | " + timeString;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+/* SLIDERS */
+let i1=0, images1=["kg1.jpg","kg2.jpg","kg3.jpg"];
+setInterval(()=>{i1=(i1+1)%images1.length; document.getElementById("slide1").src=images1[i1];},2000);
+
+let i2=0, images2=["ps1.jpg","ps1b.jpg","ps1c.jpg"];
+setInterval(()=>{i2=(i2+1)%images2.length; document.getElementById("slide2").src=images2[i2];},2000);
+
+let i4=0, images4=["sec1.jpg","sec2.jpg","sec3.jpg"];
+setInterval(()=>{i4=(i4+1)%images4.length; document.getElementById("slide4").src=images4[i4];},2000);
+
+let i5=0, images5=["dip1.jpg","dip2.jpg","dip3.jpg"];
+setInterval(()=>{i5=(i5+1)%images5.length; document.getElementById("slide5").src=images5[i5];},2000);
+</script>
+
+
+<script>
+function showActivityImage(img) {
+  alert("Here would be the image: " + img);
+  
+}
+</script>
+
+<script>
+let currentActivity = 0;
+const track = document.getElementById("activityTrack");
+const items = document.querySelectorAll(".carousel-item");
+
+function autoCarousel() {
+  items.forEach(item => item.classList.remove("active"));
+
+  items[currentActivity].classList.add("active");
+
+  const offset = currentActivity * (items[0].offsetWidth + 30);
+  track.style.transform = `translateX(-${offset}px)`;
+
+  currentActivity = (currentActivity + 1) % items.length;
+}
+
+autoCarousel();
+let interval = setInterval(autoCarousel, 3000);
+
+
+track.addEventListener("mouseenter", () => clearInterval(interval));
+track.addEventListener("mouseleave", () => {
+  interval = setInterval(autoCarousel, 3000);
+});
+</script>
+
+
+
+</body>
+</html>

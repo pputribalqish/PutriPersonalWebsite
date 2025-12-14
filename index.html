@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
+<title>Home</title>
+
+<style>
+body {
+    font-family:'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+/* HEADER */
+header {
+    background-image: url("background.jpg");
+    padding: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 35px;
+    color: rgb(255, 238, 143);
+}
+header h2 {
+    font-family: 'Gloock', serif;
+}
+
+.divider-wave {
+    text-align: center;
+    font-size: 20px;
+    color: #5c1521;
+    margin-top: 0px;
+    border-top: none;
+    letter-spacing: 4px;
+    animation: wave 2.5s ease-in-out infinite;
+    background-color: antiquewhite;
+    padding: 12px 0;
+}
+
+
+@keyframes wave {
+    0%   { letter-spacing: 4px; }
+    50%  { letter-spacing: 12px; }
+    100% { letter-spacing: 4px; }
+}
+
+
+
+
+
+
+/* HOME SECTION */
+.container {
+    width: 100%;
+    background-image: url("wallpaper.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+.main-box {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 90px;
+    gap: 60px;
+    flex-wrap: nowrap;
+}
+
+
+.profile-text h1 {
+    font-size: 40px;
+    margin: 0;
+}
+
+.profile-text p {
+    font-size: 18px;
+}
+
+
+.content {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 30px 40px;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    gap: 25px;
+}
+
+.profile-photo img {
+    width: 170px;
+    height: 170px;
+    border-radius: 60%;
+    object-fit: cover;
+}
+
+
+.content h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(50, 7, 14);
+    margin: 0;
+}
+.content p {
+    font-size: 18px;
+    color:rgb(92, 21, 33)
+}
+
+.icon-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.all-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    margin: 10px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.all-icon:hover {
+    transform: scale(1.1);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+
+
+
+/* RIGHT GALLERY BESIDE SELFIE */
+.right-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.right-gallery img {
+    width: 260px;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+
+
+.right-gallery img:hover {
+    transform: scale(1.08);
+}
+
+.gallery-card {
+    background: white;
+    padding: 12px;
+    border-radius: 15px;
+    width: 260px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.gallery-title {
+    font-size: 20px;
+    font-family: 'Gloock', serif;
+    color: #301809;
+    margin-bottom: 10px;
+}
+
+.gallery-btn {
+    background-color: #301809;
+    color: rgb(255, 238, 143);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.gallery-btn:hover {
+    background-color: #593016;
+    transform: scale(1.05);
+}
+
+
+/* FOOTER */
+footer {
+    background-color: #301809;
+    padding: 10px;
+    text-align: center;
+    color: rgb(255, 238, 143); 
+}
+</style>
+</head>
+<body>
+
+<header> 
+    <h2>AQISH'S PERSONAL PAGE</h2>
+    <p id="clock"></p>
+</header> 
+
+<script>
+function updateClock() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateString = now.toLocaleDateString(undefined, options);
+    const timeString = now.toLocaleTimeString();
+    document.getElementById("clock").innerHTML = dateString + " | " + timeString;
+}
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
+<div class="divider-wave">  ✦✦ · · · ✦ · · · ✦WELCOME TO MY PAGE✦ · · · ✦ · · · ✦✦ </div>
+
+
+
+
+
+
+
+<!-- HOME SECTION -->
+<section class="container">
+    <div class="main-box">
+
+        <!-- KOTAK PUTIH -->
+        <div class="content">
+
+            <div class="profile-text">
+                <h1>Hi, I am <br> Putri Balqish</h1>
+                <p>Welcome to my profile <br>
+                I am a final year student of Diploma in Information Management at UiTM Segamat</p>
+
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/1EzrEOXmMH3G43AXT1y7pA?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/35RJhm1pEovTBwnNR0zWad?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6s8WSX1MxNThrot8ThI6fG?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+                <div class="icon-row">
+                    <p>my socials</p>
+                    <a href="https://www.instagram.com/qqshho" target="_blank">
+                        <img src="igicon.jpg" class="all-icon">
+                    </a>
+
+                    <a href="https://www.tiktok.com/@zen1ie" target="_blank">
+                        <img src="tiktokicon.jpg" class="all-icon">
+                    </a>
+                </div>
+            </div>
+
+            <!-- GAMBAR BULAT DI ATAS KANAN -->
+            <div class="profile-photo">
+                <img src="selfie1.jpg" alt="my photo">
+            </div>
+
+        </div>
+
+        <!-- RIGHT GALLERY BETUL 2×2 -->
+       <div class="right-gallery">
+
+    <div class="gallery-card">
+        <img src="aboutme.jpg">
+        <p class="gallery-title">About Me</p>
+        <button class="gallery-btn" onclick="location.href='aboutme.html'">Click Here</button>
+    </div>
+
+    <div class="gallery-card">
+        <img src="skills.jpg">
+        <p class="gallery-title">Skills and Hobbies</p>
+        <button class="gallery-btn" onclick="location.href='skills.html'">Click Here</button>
+    </div>
+
+    <div class="gallery-card">
+        <img src="education.jpg">
+        <p class="gallery-title">Education</p>
+        <button class="gallery-btn" onclick="location.href='education.html'">Click Here</button>
+    </div>
+
+    <div class="gallery-card">
+        <img src="gallery.jpg">
+        <p class="gallery-title">Gallery</p>
+        <button class="gallery-btn" onclick="location.href='gallery.html'">Click Here</button>
+    </div>
+
+</div>
+
+        
+
+    </div>
+</section>
+
+
+<footer> 
+    <p>© 2025 Putri Balqish | Designed with ♥</p>
+</footer>
+
+</body>
+</html>

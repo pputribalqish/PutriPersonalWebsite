@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery</title>
+  <style>
+    body {
+      font-family:'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+
+    /* ---------- Header & Nav ---------- */
+    header {
+      background-image: url("background.jpg");
+      padding: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 35px;
+      color: rgb(255, 238, 143);
+    }
+    header h2 { font-family: 'Gloock', serif; margin: 0; }
+
+    ul.topnav {
+      display: flex;
+      width: 100%;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background-color: rgba(48,24,9,0.85);
+      justify-content: center;
+    }
+    ul.topnav li a {
+      display: block;
+      color: #f1f1f1;
+      padding: 14px 18px;
+      text-decoration: none;
+      text-align: center;
+    }
+    ul.topnav li a:hover {
+      background-color: #dddddd;
+      color: black;
+    }
+
+    /* ---------- Section Titles ---------- */
+    .section-title {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 32px;
+      color: #301809;
+      font-family: 'Gloock', serif;
+    }
+    .section-title:before,
+    .section-title:after {
+      content: "";
+      display: inline-block;
+      width: 150px;
+      height: 2px;
+      background: #301809;
+      margin: 0 15px;
+      vertical-align: middle;
+    }
+
+    /* ---------- Containers ---------- */
+    .container {
+      width: 100%;
+      background-image: url("wallpaper8.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: block;
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    /* ---------- Highlight Grid ---------- */
+    .highlight-grid {
+      width: 85%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+    .highlight-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      transition: 0.4s;
+      animation: fadeUp 1s ease forwards;
+      opacity: 0;
+    }
+    .highlight-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+    .highlight-card:hover img { transform: scale(1.13); }
+    .highlight-card:hover { box-shadow: 0 8px 20px rgba(48, 24, 9, 0.6); }
+
+    @keyframes fadeUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* ---------- Modal ---------- */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(6px);
+      background: rgba(0,0,0,0.55);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal-box {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 600px;        
+  max-height: 90vh;        
+  text-align: center;
+  animation: popUp 0.35s ease;
+  overflow: hidden;
+}
+
+.modal-box img { 
+  width: 100%;
+  height: auto;
+  max-height: 75vh;        
+  object-fit: contain;     
+  border-radius: 15px;
+}
+
+
+    .modal-caption { 
+        margin-top: 10px; 
+        font-size: 18px; 
+        color: #301809; 
+        font-family: 'Gloock', serif; 
+    }
+
+    .modal-close {
+      margin-top: 15px;
+      background: #301809;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .modal-close:hover { background: #54301b; }
+
+    .full-img-btn {
+      width: 100%;
+      padding: 10px;
+      background: #301809;
+      color: white;
+      font-size: 15px;
+      border: none;
+      /* Make button non-interactive visually */
+      cursor: default;
+      user-select: none;
+      border-radius: 0 0 15px 15px;
+    }
+
+    .full-img-btn:hover {
+      background: #54301b;
+    }
+
+
+    @keyframes popUp {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    
+
+    /* ---------- Family & Friends ---------- */
+    .polaroid-grid {
+      width: 90%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+    .polaroid {
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      transform: rotate(var(--angle));
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .polaroid:hover { transform: scale(1.05) rotate(1deg); }
+
+    /* ---------- Self Gallery ---------- */
+    .carousel-container { 
+        width: 70%; 
+        margin: 40px auto; 
+        position: relative; 
+        text-align: center; 
+    }
+
+    .carousel-img { 
+        width: 60%; 
+        height: 650px; 
+        object-fit: cover; 
+        border-radius: 15px; 
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4); 
+        transition: 0.4s; 
+    }
+    
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #301809;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+      border: none;
+    }
+    #prevBtn { 
+        left: -50px; 
+    }
+    #nextBtn { 
+        right: -50px; 
+    }
+    .carousel-btn:hover { 
+        background: #54301b;
+     }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background-color: rgba(48,24,9,0.85);
+      padding: 10px;
+      text-align: center;
+      color: rgb(255, 238, 143);
+      position: relative;
+      z-index:1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h2>Gallery</h2>
+    <p id="clock"></p>
+  </header>
+
+  <ul class="topnav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="aboutme.html">About Me</a></li>
+    <li><a href="education.html">Education</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+  </ul>
+
+<!-- 2025 HIGHLIGHTS -->
+<div class="container">
+  <h2 class="section-title">2025 Highlights</h2>
+  <div class="highlight-grid">
+
+    <div class="highlight-card" data-caption="Ramadhan 2025">
+      <img src="h1.jpg">
+      <!-- button now NON-FUNCTIONAL: stops click bubbling so only image click opens modal -->
+      <button class="full-img-btn" type="button" aria-disabled="true" onclick="event.stopPropagation();">Click Image</button>
+    </div>
+
+    <div class="highlight-card" data-caption="Eid-Fitri 2025 🔆">
+      <img src="h2.jpg">
+      <button class="full-img-btn" type="button" aria-disabled="true" onclick="event.stopPropagation();">Click Image</button>
+    </div>
+
+    <div class="highlight-card" data-caption="Celebrating Birthdays ✨">
+      <img src="h3.jpg">
+      <button class="full-img-btn" type="button" aria-disabled="true" onclick="event.stopPropagation();">Click Image</button>
+    </div>
+
+    <div class="highlight-card" data-caption="Internship and Achievements 💫">
+      <img src="h4.jpg">
+      <button class="full-img-btn" type="button" aria-disabled="true" onclick="event.stopPropagation();">Click Image</button>
+    </div>
+
+    <div class="highlight-card" data-caption="Random Recap">
+      <img src="h5.jpg">
+      <button class="full-img-btn" type="button" aria-disabled="true" onclick="event.stopPropagation();">Click Image</button>
+    </div>
+
+    <div class="highlight-card" data-caption="More Random Recap">
+      <img src="h6.jpg">
+      <button class="full-img-btn" type="button" aria-disabled="true" onclick="event.stopPropagation();">Click Image</button>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="modal-bg" id="modalBg">
+  <div class="modal-box">
+    <img id="modalImg" src="">
+    <p class="modal-caption" id="modalCaption"></p>
+    <button class="modal-close" id="modalClose">Close</button>
+  </div>
+</div>
+
+  <!-- FAMILY & FRIENDS -->
+  <div class="container">
+    <h2 class="section-title">Family & Friends</h2>
+    <div class="polaroid-grid">
+      <div class="polaroid" style="--angle:-3deg;"><img src="f1.jpg"></div>
+      <div class="polaroid" style="--angle:2deg;"><img src="f2.jpg"></div>
+      <div class="polaroid" style="--angle:-1deg;"><img src="f3.jpg"></div>
+      <div class="polaroid" style="--angle:3deg;"><img src="f4.jpg"></div>
+      <div class="polaroid" style="--angle:-2deg;"><img src="f5.jpg"></div>
+      <div class="polaroid" style="--angle:4deg;"><img src="f6.jpg"></div>
+      <div class="polaroid" style="--angle:1deg;"><img src="f7.jpg"></div>
+      <div class="polaroid" style="--angle:-3deg;"><img src="f8.jpg"></div>
+    </div>
+  </div>
+
+  <!-- SELF GALLERY -->
+   <div class="container">
+    <div class="carousel-container">
+  <h2 class="section-title">My Photos</h2>
+  <div class="carousel-container">
+    <button class="carousel-btn" id="prevBtn">◀</button>
+    <img class="carousel-img" id="carouselImage" src="me1.jpg">
+    <button class="carousel-btn" id="nextBtn">▶</button>
+  </div>
+  </div>
+  
+  
+  
+
+  <footer>
+    <p>© 2025 Putri Balqish | Designed with ♥</p>
+</footer>
+
+  <script>
+
+  
+
+    // MODAL POPUP
+    const cards = document.querySelectorAll(".highlight-card");
+    const modalBg = document.getElementById("modalBg");
+    const modalImg = document.getElementById("modalImg");
+    const modalCaption = document.getElementById("modalCaption");
+    const modalClose = document.getElementById("modalClose");
+
+    cards.forEach(card => {
+  card.addEventListener("click", () => {
+    const imgSrc = card.querySelector("img").src;
+    const caption = card.getAttribute("data-caption");
+    modalImg.src = imgSrc;
+    modalCaption.textContent = caption;
+    modalBg.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  });
+});
+
+function closeModal() {
+  modalBg.style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
+    modalClose.addEventListener("click", closeModal);
+    modalBg.addEventListener("click", e => { if(e.target === modalBg){ closeModal(); } });
+
+    // SELF CAROUSEL
+    let images = ["me1.jpg","me2.jpg","me3.jpg","me4.jpg","me5.jpg","me6.jpg","me7.jpg","me8.jpg"];
+    let index = 0;
+
+    document.getElementById("nextBtn").onclick = () => {
+      index = (index + 1) % images.length;
+      document.getElementById("carouselImage").src = images[index];
+    };
+    document.getElementById("prevBtn").onclick = () => {
+      index = (index - 1 + images.length) % images.length;
+      document.getElementById("carouselImage").src = images[index];
+    };
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      document.getElementById("carouselImage").src = images[index];
+    }, 4000);
+
+    // CLOCK
+    function updateClock() {
+      const now = new Date();
+      const options = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+      const dateString = now.toLocaleDateString(undefined,options);
+      const timeString = now.toLocaleTimeString();
+      document.getElementById("clock").innerHTML = dateString + " | " + timeString;
+    }
+    setInterval(updateClock,1000);
+    updateClock()
+
+    </script>
+
+</body>
+</html>
